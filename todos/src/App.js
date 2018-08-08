@@ -12,10 +12,10 @@ class ToDoItem extends Component {
   render() {
     return (
 
-      <li class={this.props.status ? 'completed' : null}>
-        <div class='view'>
+      <li className={this.props.status ? 'completed' : null}>
+        <div className='view'>
           {/* this is using this.props for now, and not status, so I can see it is working, since we aren't doing the functionality yet */}
-          <input class='toggle' type='checkbox' checked={this.props.status} />
+          <input className='toggle' type='checkbox' checked={this.props.status} />
           <label>{this.props.task}</label>
         </div>
       </li>
@@ -37,7 +37,7 @@ class ToDoList extends Component {
   render() {
     this.state = { todolist }
     return (
-      todolist.map(todo => <ToDoItem status={todo.completed} task={todo.title} />)
+      todolist.map(todo => <ToDoItem key={todo.id} status={todo.completed} task={todo.title} />)
     )
   }
 
@@ -48,45 +48,26 @@ class App extends Component {
   render() {
     return (
       <body>
-        <section class='todoapp'>
-          <header class='header'>
+        <section className='todoapp'>
+          <header className='header'>
             <h1>todos</h1>
-            <input class='new-todo' placeholder='What needs to be done?' autoFocus />
+            <input className='new-todo' placeholder='What needs to be done?' autoFocus />
           </header>
 
           {/* This section should be hidden by default and shown when there are todos */}
-          <section class='main'>
-            <ul class='todo-list'>
-              {/* <!-- These are here just to show the structure of the list items -->
-					<!-- List items should get the class `editing` when editing and `completed` when marked as completed --> */}
+          <section className='main'>
+            <ul className='todo-list'>
 
-              <ToDoList></ToDoList>
-              {/* <ToDoItem task={'this sis task'} status={true}></ToDoItem> */}
-              {/* <li class='completed'>
 
-                <div class='view'>
-                  <input class='toggle' type='checkbox' checked />
-                  <label>Taste Javascript</label>
-                  <button class='destroy'></button>
-                </div>
+              <ToDoList />
 
-              </li>
-              <li>
-
-                <div class='view'>
-                  <input class='toggle' type='checkbox' />
-                  <label> Buy a unicorn</label>
-                  <button class='destory'></button>
-                </div>
-
-              </li> */}
             </ul>
 
           </section>
 
-          <footer class='footer'>
-            <span class='todo-count'><strong>0</strong> item(s) left</span>
-            <button class="clear-completed">Clear completed</button>
+          <footer className='footer'>
+            <span className='todo-count'><strong>0</strong> item(s) left</span>
+            <button className="clear-completed">Clear completed</button>
           </footer>
 
 
